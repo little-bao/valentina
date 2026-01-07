@@ -1,0 +1,156 @@
+{
+  "Next.js App Page": {
+    "prefix": "napage",
+    "body": [
+      "import { Metadata } from 'next';",
+      "",
+      "export const metadata: Metadata = {",
+      "  title: '${1:Page Title}',",
+      "  description: '${2:Page Description}',",
+      "};",
+      "",
+      "export default function ${3:PageName}Page() {",
+      "  return (",
+      "    <div>",
+      "      <h1>${3:PageName}</h1>",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "Next.js App Router Page with Metadata"
+  },
+  "Next.js App Layout": {
+    "prefix": "nalayout",
+    "body": [
+      "import { Metadata } from 'next';",
+      "",
+      "export const metadata: Metadata = {",
+      "  title: '${1:Layout Title}',",
+      "  description: '${2:Layout Description}',",
+      "};",
+      "",
+      "export default function ${3:LayoutName}Layout({",
+      "  children,",
+      "}: {",
+      "  children: React.ReactNode;",
+      "}) {",
+      "  return (",
+      "    <section>",
+      "      {children}",
+      "    </section>",
+      "  );",
+      "}"
+    ],
+    "description": "Next.js App Router Layout"
+  },
+  "Next.js App Loading": {
+    "prefix": "naloading",
+    "body": [
+      "export default function Loading() {",
+      "  return (",
+      "    <div>Loading...</div>",
+      "  );",
+      "}"
+    ],
+    "description": "Next.js App Router Loading UI"
+  },
+  "Next.js App Error": {
+    "prefix": "naerror",
+    "body": [
+      "'use client';",
+      "",
+      "import { useEffect } from 'react';",
+      "",
+      "export default function Error({",
+      "  error,",
+      "  reset,",
+      "}: {",
+      "  error: Error & { digest?: string };",
+      "  reset: () => void;",
+      "}) {",
+      "  useEffect(() => {",
+      "    console.error(error);",
+      "  }, [error]);",
+      "",
+      "  return (",
+      "    <div>",
+      "      <h2>Something went wrong!</h2>",
+      "      <button onClick={() => reset()}>Try again</button>",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "Next.js App Router Error UI"
+  },
+  "Next.js Server Component": {
+    "prefix": "nasc",
+    "body": [
+      "export default async function ${1:ComponentName}() {",
+      "  return (",
+      "    <div>",
+      "      <h2>${1:ComponentName}</h2>",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "Next.js Server Component"
+  },
+  "Next.js Client Component": {
+    "prefix": "nacc",
+    "body": [
+      "'use client';",
+      "",
+      "import { useState } from 'react';",
+      "",
+      "export default function ${1:ComponentName}() {",
+      "  const [state, setState] = useState(null);",
+      "",
+      "  return (",
+      "    <div>",
+      "      <h2>${1:ComponentName}</h2>",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "Next.js Client Component"
+  },
+  "Next.js API Route": {
+    "prefix": "naroute",
+    "body": [
+      "import { NextResponse } from 'next/server';",
+      "",
+      "export async function GET(request: Request) {",
+      "  return NextResponse.json({ message: 'Hello World' });",
+      "}",
+      "",
+      "export async function POST(request: Request) {",
+      "  const body = await request.json();",
+      "  return NextResponse.json({ body });",
+      "}"
+    ],
+    "description": "Next.js App Router API Route Handler"
+  },
+  "Next.js Generate Metadata": {
+    "prefix": "nagenmeta",
+    "body": [
+      "import { Metadata, ResolvingMetadata } from 'next';",
+      "",
+      "type Props = {",
+      "  params: { id: string };",
+      "  searchParams: { [key: string]: string | string[] | undefined };",
+      "};",
+      "",
+      "export async function generateMetadata(",
+      "  { params, searchParams }: Props,",
+      "  parent: ResolvingMetadata",
+      "): Promise<Metadata> {",
+      "  const id = params.id;",
+      "  ",
+      "  return {",
+      "    title: `Page ${id}`,",
+      "  };",
+      "}"
+    ],
+    "description": "Next.js Dynamic Metadata Generation"
+  }
+}

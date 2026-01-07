@@ -1,0 +1,27 @@
+# Ignore artifacts:
+build
+coverage
+
+# Ignore next
+.next/
+
+# Ignore node modules
+node_modules/
+
+# Ignore .vscode
+.vscode/
+
+# Ignore husky
+.husky/
+
+# Ignore lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Ignore specific configuration files
+*.config.js
+
+# Ignore environment variables files
+.env
+.env.*

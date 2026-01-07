@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# Pre-commit hook: run lint checks and formatting
+echo "🔧 Running lint:fix before commit..."
+
+# Check if we're using npm, pnpm, or yarn
+if [ -f "pnpm-lock.yaml" ]; then
+  LINT_CMD="pnpm run lint:fix"
+  LINT_STAGED_CMD="pnpm exec lint-staged"
+elif [ -f "yarn.lock" ]; then
+  LINT_CMD="yarn lint:fix"
+  LINT_STAGED_CMD="yarn lint-staged"
+else
+  LINT_CMD="npm run lint:fix"
+  LINT_STAGED_CMD="npx lint-staged"
+fi
+
+# Run lint:fix
+$LINT_CMD
+
+# Check if lint:fix was successful
+if [ $? -ne 0 ]; then
+  echo "❌ Lint fix failed, aborting commit"
+  exit 1
+fi
+
+# Run lint-staged for final formatting
+echo "✅ Lint fix successful, running lint-staged..."
+$LINT_STAGED_CMD
+
+if [ $? -ne 0 ]; then
+  echo "❌ Lint-staged failed, aborting commit"
+  exit 1
+fi
+
+# Add all changes after successful lint and format
+echo "📦 Adding all changes to git..."
+git add .
+
+echo "✅ Pre-commit checks passed and changes staged!"
+exit 0
