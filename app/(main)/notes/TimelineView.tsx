@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { urlForImage } from "@/sanity/lib/sanityImageUrl";
 import type { NoteCategory, NoteType } from "@/sanity/types/notes";
 
 const TimelineView = ({ notes }: { notes: NoteType[] }) => {
@@ -76,7 +77,7 @@ const TimelineView = ({ notes }: { notes: NoteType[] }) => {
             )}
           >
             <img
-              src={img}
+              src={urlForImage(img).url()}
               alt="Note image"
               className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
               loading="lazy"
