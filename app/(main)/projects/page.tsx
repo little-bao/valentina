@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { client } from "@/sanity/client";
-import { ProjectType } from "@/sanity/types/projects";
+import type { ProjectType } from "@/sanity/types/projects";
 
 import Projects from "./Projects";
 
@@ -8,7 +8,6 @@ const options = { next: { revalidate: 60 * 60 * 24 } };
 
 const PROJECTS_QUERY = `*[
 _type == "project"
-
 ] | order(publishedAt desc) {
   _id,
   name,
